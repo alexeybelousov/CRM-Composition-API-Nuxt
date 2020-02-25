@@ -1,0 +1,15 @@
+import _ from 'lodash';
+import store from '../store';
+import ru from '../locales/ru.json';
+import en from '../locales/en.json';
+
+const locales = {
+  'ru-RU': ru,
+  'en-US': en,
+};
+
+export default function localizeFilter(key) {
+  const locale = 'ru-RU';// _.get(store, "getters['userInfo/info'].locale", null) || 'ru-RU';
+
+  return locales[locale][key] || `[Localize error] key ${key} not found`;
+}

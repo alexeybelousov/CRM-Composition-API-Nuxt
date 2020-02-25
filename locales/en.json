@@ -1,0 +1,71 @@
+{
+  "add-new": "Add new",
+  "login": "Login",
+  "register": "Register",
+  "name": "Name",
+  "logout": "Logout",
+  "create": "Create",
+  "select-category": "Select category",
+  "bill-currency": "Currency bill",
+  "currency": "Currency",
+  "currency-exchange": "Currency exchange",
+  "rate": "Rate",
+  "date": "Date",
+  "amount": "Amount",
+  "type": "Type",
+  "open": "Open",
+
+  "sidebar-bill": "Bill",
+  "sidebar-history": "History",
+  "sidebar-planning": "Planning",
+  "sidebar-new-record": "New record",
+  "sidebar-categories": "Category",
+
+  "profile-title": "Profile",
+  "profile-name": "Name",
+  "profile-message-incorrect-name": "Incorrect name",
+  "profile-update": "Update",
+
+  "register-title": "Register. Home bookkeeping",
+  "register-name-incorrect": "Name incorrect",
+  "register-agree-with-rules": "Agree with rules",
+  "register-have-account": "Have account?",
+
+  "detail-title": "Detail",
+  "detail-desc": "Description",
+  "detail-amount": "Amount",
+  "detail-category": "Category",
+  "detail-with-id": "Record with id=",
+  "detail-not-found": "not found",
+
+  "planning-title": "Planning",
+  "planning-categories-not-exist": "Categories does not exist ",
+
+  "login-title": "Login. Home bookkeeping",
+  "email": "Email",
+  "email-incorrect": "Email incorrect",
+  "password": "Password",
+  "password-incorrect": "Password incorrect",
+  "login-no-account": "No account?",
+
+  "bill-title": "Bill",
+
+  "history-title": "History",
+  "history-record-not-exist": "Records does not exist ",
+
+  "record-title": "New record",
+  "record-income": "Income",
+  "record-outcome": "Outcome",
+  "record-amount": "Amount",
+  "record-amount-incorrect": "Amount incorrect",
+  "record-desc": "Description",
+  "record-desc-incorrect": "Description incorrect",
+
+  "categories-title": "Categories",
+  "categories-not-found": "Category not found",
+  "categories-input-name": "Input name",
+  "categories-limit": "Limit",
+  "categories-min-value": "Min value",
+  "categories-edit": "Edit",
+  "categories-update": "Update"
+}

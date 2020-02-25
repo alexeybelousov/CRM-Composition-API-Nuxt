@@ -1,0 +1,71 @@
+{
+  "add-new": "Добавить",
+  "login": "Вход",
+  "register": "Регистрация",
+  "name": "Имя",
+  "logout": "Выйти",
+  "create": "Создать",
+  "select-category": "Выберете категорию",
+  "bill-currency": "Счет в валюте",
+  "currency": "Валюта",
+  "currency-exchange": "Курсы валют",
+  "rate": "Курс",
+  "date": "Дата",
+  "amount": "Сумма",
+  "type": "Тип",
+  "open": "Открыть",
+
+  "sidebar-bill": "Счет",
+  "sidebar-history": "История",
+  "sidebar-planning": "Планирование",
+  "sidebar-new-record": "Новая запись",
+  "sidebar-categories": "Категории",
+
+  "profile-title": "Профиль",
+  "profile-name": "Имя",
+  "profile-message-incorrect-name": "Некорректное имя",
+  "profile-update": "Обновить",
+
+  "register-title": "Регистрация. Домашняя бухгалтерия",
+  "register-name-incorrect": "Некорректное имя",
+  "register-agree-with-rules": "Согласен с правилами",
+  "register-have-account": "Есть аккаунт?",
+
+  "detail-title": "Детали",
+  "detail-desc": "Описание",
+  "detail-amount": "Сумма",
+  "detail-category": "Категория",
+  "detail-with-id": "Запись с id=",
+  "detail-not-found": "не найдена",
+
+  "planning-title": "Планирование",
+  "planning-categories-not-exist": "Категорий нет ",
+
+  "login-title": "Вход. Домашняя бухгалтерия",
+  "email": "Email",
+  "email-incorrect": "Некорректный email",
+  "password": "Пароль",
+  "password-incorrect": "Некорректный пароль",
+  "login-no-account": "Нет аккаунта?",
+
+  "bill-title": "Счет",
+
+  "history-title": "История",
+  "history-record-not-exist": "Записей нет ",
+
+  "record-title": "Новая запись",
+  "record-income": "Приход",
+  "record-outcome": "Расход",
+  "record-amount": "Сумма",
+  "record-amount-incorrect": "Некорректная сумма",
+  "record-desc": "Описание",
+  "record-desc-incorrect": "Некорректное описание",
+
+  "categories-title": "Категории",
+  "categories-not-found": "Категория не найдена",
+  "categories-input-name": "Введите имя",
+  "categories-limit": "Лимит",
+  "categories-min-value": "Минимальная сумма",
+  "categories-edit": "Редактирование",
+  "categories-update": "Обновить"
+}
