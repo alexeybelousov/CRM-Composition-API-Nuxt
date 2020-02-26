@@ -12,7 +12,6 @@ import titlePlugin from '@/utils/title.plugin';
 import tooltipDirective from '@/directives/tooltip.directive';
 
 import Loader from '@/components/app/Loader.vue';
-//import Paginate from 'vuejs-paginate';
 
 Vue.use(VueCompositionAPI);
 
@@ -27,7 +26,3 @@ Vue.use(titlePlugin);
 Vue.directive('tooltip', tooltipDirective);
 
 Vue.component('Loader', Loader);
-
-// if (process.client) {
-//   Vue.component('Paginate', Paginate);
-// }

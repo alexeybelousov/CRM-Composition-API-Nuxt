@@ -25,13 +25,13 @@
 
             <ul id='dropdown' class='dropdown-content'>
               <li>
-                <router-link
+                <n-link
                   tag="a"
                   to="/profile"
                   class="black-text">
                   <i class="material-icons">account_circle</i>
                     {{ 'profile-title' | localize }}
-                </router-link>
+                </n-link>
               </li>
               <li class="divider" tabindex="-1"></li>
               <li>

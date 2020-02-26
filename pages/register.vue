@@ -4,17 +4,17 @@
     @submit.prevent="submit"
   >
     <div class="card-content">
-      <span class="card-title">{{ 'login-title' | localize }}</span>
+      <span class="card-title">{{ 'register-title' | localize }}</span>
 
       <div class="input-field">
         <input
-            id="email"
-            type="text"
-            class="validate"
-            :class="{
-              invalid: isEmailInvalid,
-            }"
-            v-model.trim="emailField"
+          id="email"
+          type="text"
+          v-model.trim="emailField"
+          class="validate"
+          :class="{
+            invalid: isEmailInvalid,
+          }"
         >
 
         <label for="email">{{ 'email' | localize }}</label>
@@ -47,6 +47,37 @@
           {{ 'password-incorrect' | localize }}
         </small>
       </div>
+
+      <div class="input-field">
+        <input
+            id="name"
+            type="text"
+            class="validate"
+            :class="{
+              invalid: isNameInvalid,
+            }"
+            v-model.trim="nameField"
+        >
+
+        <label for="name">{{ 'name' | localize }}</label>
+
+        <small
+          v-if="isNameInvalid"
+          class="helper-text invalid"
+        >
+          {{ 'register-name-incorrect' | localize }}
+        </small>
+      </div>
+
+      <p>
+        <label>
+          <input
+            type="checkbox"
+            v-model="agreeCheckbox"
+          />
+          <span>{{ 'register-agree-with-rules' | localize }}</span>
+        </label>
+      </p>
     </div>
 
     <div class="card-action">
@@ -55,57 +86,54 @@
             class="btn waves-effect waves-light auth-submit"
             type="submit"
         >
-          {{ 'login' | localize }}
+          {{ 'register' | localize }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        {{ 'login-no-account' | localize }}
-        <n-link
+        {{ 'register-have-account' | localize }}
+        <router-link
           tag="a"
-          to="/register"
+          to="/login"
         >
-          {{ 'register' | localize }}
-        </n-link>
+          {{ 'login' | localize }}
+        </router-link>
       </p>
     </div>
   </form>
 </template>
 
 <script>
-import { ref, computed, onMounted } from '@vue/composition-api';
+import { ref, computed } from '@vue/composition-api';
 import useVuelidate from '@vuelidate/core';
 import { email, required, minLength } from 'vuelidate/lib/validators';
-import messages from '@/utils/messages';
 
 export default {
-  head() {
-    return {
-      title: this.$title('login-title'),
-    };
+  head: {
+    title: this.$title('register-title'),
   },
-  middleware ({ store, redirect }) {
-    // If the user is not authenticated
-    if (store.getters['auth/user']) {
-      return redirect('/')
-    }
-  },
-  layout: 'empty',
   setup(props, ctx) {
     const emailField = ref('');
     const passwordField = ref('');
+    const nameField = ref('');
+    const agreeCheckbox = ref(false);
 
     const $v = useVuelidate(
       {
         emailField: { email, required, $autoDirty: true },
         passwordField: { required, minLength: minLength(6), $autoDirty: true },
+        nameField: { required, $autoDirty: true },
+        agreeCheckbox: { checked: (v) => v },
       },
-      { emailField, passwordField },
+      {
+        emailField, passwordField, nameField, agreeCheckbox,
+      },
     );
 
     const isEmailInvalid = computed(() => $v.emailField.$dirty && $v.emailField.$invalid);
     const isPasswordInvalid = computed(() => $v.passwordField.$dirty && $v.passwordField.$invalid);
+    const isNameInvalid = computed(() => $v.nameField.$dirty && $v.nameField.$invalid);
 
     const submit = async () => {
       if ($v.$invalid) {
@@ -115,27 +143,25 @@ export default {
       const formData = {
         email: emailField.value,
         password: passwordField.value,
+        name: nameField.value,
       };
 
       try {
-        await ctx.root.$store.dispatch('auth/login', formData);
+        await ctx.root.$store.dispatch('auth/register', formData);
         ctx.root.$router.push('/');
         // eslint-disable-next-line no-empty
       } catch (e) {}
     };
 
-    onMounted(() => {
-      if (messages[ctx.root.$route.query.message]) {
-        ctx.root.$message(messages[ctx.root.$route.query.message]);
-      }
-    });
-
     return {
       emailField,
       passwordField,
+      nameField,
+      agreeCheckbox,
       submit,
       isEmailInvalid,
       isPasswordInvalid,
+      isNameInvalid,
       $v,
     };
   },

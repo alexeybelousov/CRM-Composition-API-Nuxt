@@ -37,16 +37,16 @@ import CategoryCreate from '@/components/CategoryCreate.vue';
 import CategoryEdit from '@/components/CategoryEdit.vue';
 
 export default {
-  // metaInfo() {
-  //   return {
-  //     title: this.$title('categories-title'),
-  //   };
-  // },
+  head() {
+    return {
+      title: this.$title('categories-title'),
+    };
+  },
   async fetch({ store }) {
-    if (!store.getters['userInfo/info']) {
-      store.dispatch('userInfo/fetchUserInfo');
+    //if (!store.getters['userInfo/info']) {
+      //store.dispatch('userInfo/fetchUserInfo');
       await store.dispatch('categories/fetchCategories');
-    }
+    //}
   },
   components: {
     Loader,

@@ -19,13 +19,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  // router: {
-  //   middleware: ["auth"],
-  // },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#26a69a' },
   /*
   ** Global CSS
   */
@@ -38,6 +35,7 @@ export default {
   */
   plugins: [
     '@/plugins/common',
+    '@/plugins/client'
   ],
   /*
   ** Nuxt.js dev-modules

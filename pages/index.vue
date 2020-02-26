@@ -38,6 +38,11 @@ import HomeBill from '@/components/HomeBill.vue';
 import HomeCurrency from '@/components/HomeCurrency.vue';
 
 export default {
+  head() {
+    return {
+      title: this.$title('bill-title'),
+    };
+  },
   middleware: 'auth',
   components: {
     Loader,
@@ -45,10 +50,10 @@ export default {
     HomeCurrency,
   },
   async fetch({ store }) {
-    if (!store.getters['userInfo/info']) {
-      store.dispatch('userInfo/fetchUserInfo');
+    //if (!store.getters['userInfo/info']) {
+      //store.dispatch('userInfo/fetchUserInfo');
       await store.dispatch('fetchCurrency');
-    }
+    //}
   },
   setup(props, ctx) {
     const loading = ref(true);
