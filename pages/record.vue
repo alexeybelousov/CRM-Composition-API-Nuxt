@@ -206,7 +206,7 @@ export default {
         };
 
         try {
-          await ctx.root.$store.dispatch('createRecord', formData);
+          await ctx.root.$store.dispatch('records/createRecord', formData);
 
           amountField.value = 50;
           descField.value = '-';

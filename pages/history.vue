@@ -38,7 +38,7 @@
         :records="items"
       />
 
-      <!-- <Paginate
+      <Paginate
         v-model="page"
         :page-count="pageCount"
         :click-handler="pageChange"
@@ -46,7 +46,7 @@
         :next-text="'>'"
         :container-class="'pagination'"
         :page-class="'waves-effect'"
-      /> -->
+      />
     </section>
   </div>
 </template>

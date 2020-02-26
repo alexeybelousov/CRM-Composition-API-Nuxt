@@ -24,7 +24,7 @@ export const actions = {
       // Set the user locally
       commit('setUser', { email, uid, isServer: false }); // SET_USER
     } catch (e) {
-      commit('setError', e);
+      commit('notify/setError', e, { root: true });
       throw e;
     }
   },
@@ -38,7 +38,7 @@ export const actions = {
         name,
       });
     } catch (e) {
-      commit('setError', e);
+      commit('notify/setError', e, { root: true });
       throw e;
     }
   },

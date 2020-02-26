@@ -110,9 +110,12 @@ import useVuelidate from '@vuelidate/core';
 import { email, required, minLength } from 'vuelidate/lib/validators';
 
 export default {
-  head: {
-    title: this.$title('register-title'),
+  head() {
+    return {
+      title: this.$title('register-title'),
+    };
   },
+  layout: 'empty',
   setup(props, ctx) {
     const emailField = ref('');
     const passwordField = ref('');

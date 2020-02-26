@@ -33,10 +33,10 @@ export const actions = {
       await fb.database().ref(`/users/${uid}/records`).push(record);
 
       const bill = record.type === 'income'
-        ? getters.info.bill + record.amount
-        : getters.info.bill - record.amount;
+        ? rootGetters['userInfo/info'].bill + record.amount
+        : rootGetters['userInfo/info'].bill - record.amount;
 
-      dispatch('updateUserInfo', { bill });
+      dispatch('userInfo/updateUserInfo', { bill }, { root: true });
     } catch (e) {
       commit('notify/setError', e, { root: true });
       throw e;
