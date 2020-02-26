@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>{{ 'categories-edit' | localize }}</h4>
+        <h4>{{ 'categories-edit' | localize(store) }}</h4>
       </div>
 
       <form
@@ -21,7 +21,7 @@
               {{ cat.title }}
             </option>
           </select>
-          <label>{{ 'select-category' | localize }}</label>
+          <label>{{ 'select-category' | localize(store) }}</label>
         </div>
 
         <div class="input-field">
@@ -34,13 +34,13 @@
               v-model="titleField"
           >
 
-          <label for="name">{{ 'name' | localize }}</label>
+          <label for="name">{{ 'name' | localize(store) }}</label>
 
           <span
             v-if="isTitleInvalid"
             class="helper-text invalid"
           >
-            {{ 'categories-input-name' | localize }}
+            {{ 'categories-input-name' | localize(store) }}
           </span>
         </div>
 
@@ -54,18 +54,18 @@
               v-model.number="limitField"
           >
 
-          <label for="limit">{{ 'categories-limit' | localize }}</label>
+          <label for="limit">{{ 'categories-limit' | localize(store) }}</label>
 
           <span
             v-if="isLimitInvalid"
             class="helper-text invalid"
           >
-            {{ 'categories-min-value' | localize }}
+            {{ 'categories-min-value' | localize(store) }}
           </span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          {{ 'categories-update' | localize }}
+          {{ 'categories-update' | localize(store) }}
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -159,6 +159,7 @@ export default {
       isLimitInvalid,
       submit,
       $v,
+      store: ctx.root.$store,
     };
   },
 };

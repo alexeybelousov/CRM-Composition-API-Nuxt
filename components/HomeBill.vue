@@ -2,7 +2,7 @@
   <div class="col s12 m6 l4">
     <div class="card light-blue bill-card">
       <div class="card-content white-text">
-        <span class="card-title">{{ 'bill-currency' | localize }}</span>
+        <span class="card-title">{{ 'bill-currency' | localize(store) }}</span>
 
         <p
           v-for="currency of currencies"
@@ -33,6 +33,7 @@ export default {
       currencies,
       base,
       getCurrency,
+      store: ctx.root.$store,
     };
   },
 };

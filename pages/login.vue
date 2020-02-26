@@ -4,7 +4,7 @@
     @submit.prevent="submit"
   >
     <div class="card-content">
-      <span class="card-title">{{ 'login-title' | localize }}</span>
+      <span class="card-title">{{ 'login-title' | localize(store) }}</span>
 
       <div class="input-field">
         <input
@@ -17,13 +17,13 @@
             v-model.trim="emailField"
         >
 
-        <label for="email">{{ 'email' | localize }}</label>
+        <label for="email">{{ 'email' | localize(store) }}</label>
 
         <small
           v-if="isEmailInvalid"
           class="helper-text invalid"
         >
-          {{ 'email-incorrect' | localize }}
+          {{ 'email-incorrect' | localize(store) }}
         </small>
       </div>
 
@@ -38,13 +38,13 @@
             v-model.trim="passwordField"
         >
 
-        <label for="password">{{ 'password' | localize }}</label>
+        <label for="password">{{ 'password' | localize(store) }}</label>
 
         <small
           v-if="isPasswordInvalid"
           class="helper-text invalid"
         >
-          {{ 'password-incorrect' | localize }}
+          {{ 'password-incorrect' | localize(store) }}
         </small>
       </div>
     </div>
@@ -55,18 +55,18 @@
             class="btn waves-effect waves-light auth-submit"
             type="submit"
         >
-          {{ 'login' | localize }}
+          {{ 'login' | localize(store) }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        {{ 'login-no-account' | localize }}
+        {{ 'login-no-account' | localize(store) }}
         <n-link
           tag="a"
           to="/register"
         >
-          {{ 'register' | localize }}
+          {{ 'register' | localize(store) }}
         </n-link>
       </p>
     </div>
@@ -137,6 +137,7 @@ export default {
       isEmailInvalid,
       isPasswordInvalid,
       $v,
+      store: ctx.root.$store,
     };
   },
 };

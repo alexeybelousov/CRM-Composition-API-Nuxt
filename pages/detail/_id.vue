@@ -10,7 +10,7 @@
           to="/history"
           class="breadcrumb"
         >
-          {{ 'detail-title' | localize }}
+          {{ 'detail-title' | localize(store) }}
         </n-link>
 
         <a
@@ -28,9 +28,9 @@
             :class="[record.typeClass]"
           >
             <div class="card-content white-text">
-              <p>{{ 'detail-desc' | localize }}: {{ record.desc }}</p>
-              <p>{{ 'detail-amount' | localize }}: {{ record.amount | currency('RUB') }}</p>
-              <p>{{ 'detail-category' | localize }}: {{ record.categoryName }}</p>
+              <p>{{ 'detail-desc' | localize(store) }}: {{ record.desc }}</p>
+              <p>{{ 'detail-amount' | localize(store) }}: {{ record.amount | currency('RUB') }}</p>
+              <p>{{ 'detail-category' | localize(store) }}: {{ record.categoryName }}</p>
 
               <small>{{ Date.parse(record.date) | date('datetime') }}</small>
             </div>
@@ -43,7 +43,7 @@
       v-else
       class="center"
     >
-      {{ 'detail-with-id' | localize }} {{ $route.params.id }} {{ 'detail-not-found' | localize }}
+      {{ 'detail-with-id' | localize(store) }} {{ $route.params.id }} {{ 'detail-not-found' | localize(store) }}
     </p>
   </div>
 </template>
@@ -81,6 +81,7 @@ export default {
     return {
       loading,
       record,
+      store: ctx.root.$store,
     };
   },
 };

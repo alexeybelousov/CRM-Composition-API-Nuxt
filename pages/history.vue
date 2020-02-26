@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{ 'history-title' | localize }}</h3>
+      <h3>{{ 'history-title' | localize(store) }}</h3>
     </div>
 
     <div
@@ -23,11 +23,11 @@
       v-else-if="!filteredRecords.length"
       class="center"
     >
-      {{ 'history-record-not-exist' | localize }}
+      {{ 'history-record-not-exist' | localize(store) }}
       <router-link
         to="/record"
       >
-        {{ 'add-new' | localize }}
+        {{ 'add-new' | localize(store) }}
       </router-link>
     </p>
 
@@ -66,11 +66,8 @@ export default {
     };
   },
   async fetch({ store }) {
-    //if (!store.getters['userInfo/info']) {
-      //store.dispatch('userInfo/fetchUserInfo');
-      store.dispatch('records/fetchRecords');
-      await store.dispatch('categories/fetchCategories');
-    //}
+    store.dispatch('records/fetchRecords');
+    await store.dispatch('categories/fetchCategories');
   },
   components: {
     Chart,
@@ -145,6 +142,7 @@ export default {
       pageCount,
       pageChange,
       chartData,
+      store: ctx.root.$store,
     };
   },
 };

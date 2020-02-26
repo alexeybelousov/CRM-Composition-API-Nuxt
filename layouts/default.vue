@@ -28,11 +28,12 @@
 
       <div class="fixed-action-btn">
         <nuxt-link
+          :key="locale"
           tag="a"
           class="btn-floating btn-large blue"
           to="/record"
+          v-tooltip="localizeFilter('create-record', store)"
         >
-        <!-- v-tooltip="'Create new record'" -->
             <i class="large material-icons">add</i>
         </nuxt-link >
       </div>
@@ -49,6 +50,9 @@ import Loader from '@/components/app/Loader.vue';
 
 import Navbar from '@/components/app/Navbar.vue';
 import Sidebar from '@/components/app/Sidebar.vue';
+
+import localizeFilter from '@/filters/localize.filter';
+
 import messages from '@/utils/messages';
 
 export default {
@@ -57,21 +61,15 @@ export default {
     Loader,
     Sidebar,
   },
-  // async fetch({ store }) {
-  //   if (!store.getters['userInfo/info'].name) {
-  //     console.log('fetchUserInfo');
-  //     await store.dispatch('userInfo/fetchUserInfo');
-  //   }
-  // },
   setup(props, ctx) {
     const loading = ref(true);
-    const isSidebarOpen = ref(true);
+    const isSidebarOpen = ref(false);
     const onToggleSidebar = () => {
       isSidebarOpen.value = !isSidebarOpen.value;
     };
 
     onMounted(async () => {
-      if (!_.get(ctx, 'ctx.root.$store.getters[userInfo/info].name', null)) {
+      if (!_.get(ctx, 'root.$store.getters[userInfo/info].name', null)) {
         await ctx.root.$store.dispatch('userInfo/fetchUserInfo');
       }
 
@@ -92,8 +90,9 @@ export default {
       isSidebarOpen,
       onToggleSidebar,
       loading,
-      // error,
       locale,
+      store: ctx.root.$store,
+      localizeFilter,
     };
   },
 };

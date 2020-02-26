@@ -3,11 +3,11 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>{{ 'amount' | localize }}</th>
-      <th>{{ 'date' | localize }}</th>
-      <th>{{ 'categories-title' | localize }}</th>
-      <th>{{ 'type' | localize }}</th>
-      <th>{{ 'open' | localize }}</th>
+      <th>{{ 'amount' | localize(store) }}</th>
+      <th>{{ 'date' | localize(store) }}</th>
+      <th>{{ 'categories-title' | localize(store) }}</th>
+      <th>{{ 'type' | localize(store) }}</th>
+      <th>{{ 'open' | localize(store) }}</th>
     </tr>
     </thead>
 
@@ -51,5 +51,10 @@ export default {
       require: true,
     },
   },
+  setup(props, ctx) {
+    return {
+      store: ctx.root.$store,
+    }
+  }
 };
 </script>

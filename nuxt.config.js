@@ -35,7 +35,8 @@ export default {
   */
   plugins: [
     '@/plugins/common',
-    '@/plugins/client'
+    '@/plugins/client',
+    '@/plugins/title.js'
   ],
   /*
   ** Nuxt.js dev-modules

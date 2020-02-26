@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{ 'bill-title' | localize }}</h3>
+      <h3>{{ 'bill-title' | localize(store) }}</h3>
 
       <button
         class="btn waves-effect waves-light btn-small"
@@ -50,10 +50,7 @@ export default {
     HomeCurrency,
   },
   async fetch({ store }) {
-    //if (!store.getters['userInfo/info']) {
-      //store.dispatch('userInfo/fetchUserInfo');
-      await store.dispatch('fetchCurrency');
-    //}
+    await store.dispatch('fetchCurrency');
   },
   setup(props, ctx) {
     const loading = ref(true);
@@ -78,6 +75,7 @@ export default {
       loading,
       currency,
       refresh,
+      store: ctx.root.$store,
     };
   },
 };

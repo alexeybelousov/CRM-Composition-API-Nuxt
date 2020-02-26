@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{ 'record-title' | localize }}</h3>
+      <h3>{{ 'record-title' | localize(store) }}</h3>
     </div>
 
     <Loader
@@ -16,7 +16,7 @@
       <router-link
         to="/categories"
       >
-        {{ 'add-new' | localize }}
+        {{ 'add-new' | localize(store) }}
       </router-link>
     </p>
 
@@ -37,7 +37,7 @@
               {{ cat.title }}
             </option>
           </select>
-        <label>{{ 'select-category' | localize }}</label>
+        <label>{{ 'select-category' | localize(store) }}</label>
       </div>
 
       <p>
@@ -49,7 +49,7 @@
               value="income"
               v-model="type"
           />
-          <span>{{ 'record-income' | localize }}</span>
+          <span>{{ 'record-income' | localize(store) }}</span>
         </label>
       </p>
 
@@ -62,7 +62,7 @@
               value="outcome"
               v-model="type"
           />
-          <span>{{ 'record-outcome' | localize }}</span>
+          <span>{{ 'record-outcome' | localize(store) }}</span>
         </label>
       </p>
 
@@ -76,13 +76,13 @@
           v-model.number="amountField"
         >
 
-        <label for="amount">{{ 'record-amount' | localize }}</label>
+        <label for="amount">{{ 'record-amount' | localize(store) }}</label>
 
         <span
           v-if="isAmountInvalid"
           class="helper-text invalid"
         >
-          {{ 'record-amount-incorrect' | localize }}
+          {{ 'record-amount-incorrect' | localize(store) }}
         </span>
       </div>
 
@@ -96,18 +96,18 @@
           v-model="descField"
         >
 
-        <label for="description">{{ 'record-desc' | localize }}</label>
+        <label for="description">{{ 'record-desc' | localize(store) }}</label>
 
         <span
           v-if="isDescInvalid"
           class="helper-text invalid"
         >
-          {{ 'record-desc-incorrect' | localize }}
+          {{ 'record-desc-incorrect' | localize(store) }}
         </span>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        {{ 'create' | localize }}
+        {{ 'create' | localize(store) }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -128,10 +128,7 @@ export default {
     };
   },
   async fetch({ store }) {
-    //if (!store.getters['userInfo/info']) {
-      //store.dispatch('userInfo/fetchUserInfo');
-      await store.dispatch('categories/fetchCategories');
-    //}
+    await store.dispatch('categories/fetchCategories');
   },
   setup(props, ctx) {
     const loading = ref(true);
@@ -235,6 +232,7 @@ export default {
       submit,
       canCreateRecord,
       bill,
+      store: ctx.root.$store,
     };
   },
 };

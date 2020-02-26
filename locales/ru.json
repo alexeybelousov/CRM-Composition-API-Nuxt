@@ -14,6 +14,7 @@
   "amount": "Сумма",
   "type": "Тип",
   "open": "Открыть",
+  "create-record": "Создать новую запись",
 
   "sidebar-bill": "Счет",
   "sidebar-history": "История",

@@ -8,8 +8,8 @@ const locales = {
   'en-US': en,
 };
 
-export default function localizeFilter(key) {
-  const locale = 'ru-RU';// _.get(store, "getters['userInfo/info'].locale", null) || 'ru-RU';
+export default function localizeFilter(key, store) {
+  const locale = _.get(store, "getters['userInfo/info'].locale", null) || 'ru-RU';
 
   return locales[locale][key] || `[Localize error] key ${key} not found`;
 }

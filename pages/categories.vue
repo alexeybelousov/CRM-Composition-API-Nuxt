@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{ 'categories-title' | localize }}</h3>
+      <h3>{{ 'categories-title' | localize(store) }}</h3>
     </div>
     <section>
       <Loader
@@ -20,7 +20,7 @@
         />
 
         <p class="center" v-else>
-          {{ 'categories-not-found' | localize }}
+          {{ 'categories-not-found' | localize(store) }}
         </p>
       </div>
     </section>
@@ -43,10 +43,7 @@ export default {
     };
   },
   async fetch({ store }) {
-    //if (!store.getters['userInfo/info']) {
-      //store.dispatch('userInfo/fetchUserInfo');
-      await store.dispatch('categories/fetchCategories');
-    //}
+    await store.dispatch('categories/fetchCategories');
   },
   components: {
     Loader,
@@ -74,6 +71,7 @@ export default {
       categories,
       loading,
       key,
+      store: ctx.root.$store,
     };
   },
 };

@@ -27,27 +27,27 @@ export default {
   props: {
     isSidebarOpen: Boolean,
   },
-  setup() {
+  setup(props, { root }) {
     const links = [
       {
-        title: localizeFilter('sidebar-bill'),
+        title: localizeFilter('sidebar-bill', root.$store),
         url: '/',
         exact: true,
       },
       {
-        title: localizeFilter('sidebar-history'),
+        title: localizeFilter('sidebar-history', root.$store),
         url: '/history',
       },
       {
-        title: localizeFilter('sidebar-planning'),
+        title: localizeFilter('sidebar-planning', root.$store),
         url: '/planning',
       },
       {
-        title: localizeFilter('sidebar-new-record'),
+        title: localizeFilter('sidebar-new-record', root.$store),
         url: '/record',
       },
       {
-        title: localizeFilter('sidebar-categories'),
+        title: localizeFilter('sidebar-categories', root.$store),
         url: '/categories',
       },
     ];

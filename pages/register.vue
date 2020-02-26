@@ -4,7 +4,7 @@
     @submit.prevent="submit"
   >
     <div class="card-content">
-      <span class="card-title">{{ 'register-title' | localize }}</span>
+      <span class="card-title">{{ 'register-title' | localize(store) }}</span>
 
       <div class="input-field">
         <input
@@ -17,13 +17,13 @@
           }"
         >
 
-        <label for="email">{{ 'email' | localize }}</label>
+        <label for="email">{{ 'email' | localize(store) }}</label>
 
         <small
           v-if="isEmailInvalid"
           class="helper-text invalid"
         >
-          {{ 'email-incorrect' | localize }}
+          {{ 'email-incorrect' | localize(store) }}
         </small>
       </div>
 
@@ -38,13 +38,13 @@
             v-model.trim="passwordField"
         >
 
-        <label for="password">{{ 'password' | localize }}</label>
+        <label for="password">{{ 'password' | localize(store) }}</label>
 
         <small
           v-if="isPasswordInvalid"
           class="helper-text invalid"
         >
-          {{ 'password-incorrect' | localize }}
+          {{ 'password-incorrect' | localize(store) }}
         </small>
       </div>
 
@@ -59,13 +59,13 @@
             v-model.trim="nameField"
         >
 
-        <label for="name">{{ 'name' | localize }}</label>
+        <label for="name">{{ 'name' | localize(store) }}</label>
 
         <small
           v-if="isNameInvalid"
           class="helper-text invalid"
         >
-          {{ 'register-name-incorrect' | localize }}
+          {{ 'register-name-incorrect' | localize(store) }}
         </small>
       </div>
 
@@ -75,7 +75,7 @@
             type="checkbox"
             v-model="agreeCheckbox"
           />
-          <span>{{ 'register-agree-with-rules' | localize }}</span>
+          <span>{{ 'register-agree-with-rules' | localize(store) }}</span>
         </label>
       </p>
     </div>
@@ -86,18 +86,18 @@
             class="btn waves-effect waves-light auth-submit"
             type="submit"
         >
-          {{ 'register' | localize }}
+          {{ 'register' | localize(store) }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        {{ 'register-have-account' | localize }}
+        {{ 'register-have-account' | localize(store) }}
         <router-link
           tag="a"
           to="/login"
         >
-          {{ 'login' | localize }}
+          {{ 'login' | localize(store) }}
         </router-link>
       </p>
     </div>
@@ -166,6 +166,7 @@ export default {
       isPasswordInvalid,
       isNameInvalid,
       $v,
+      store: ctx.root.$store,
     };
   },
 };

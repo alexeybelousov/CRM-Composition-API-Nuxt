@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{ 'planning-title' | localize }}</h3>
+      <h3>{{ 'planning-title' | localize(store) }}</h3>
       <h4>{{ bill | currency('RUB')}}</h4>
     </div>
 
@@ -13,11 +13,11 @@
       v-else-if="!categories.length"
       class="center"
     >
-      {{ 'planning-categories-not-exist' | localize }}
+      {{ 'planning-categories-not-exist' | localize(store) }}
       <router-link
         to="/categories"
       >
-        {{ 'add-new' | localize }}
+        {{ 'add-new' | localize(store) }}
       </router-link>
     </p>
 
@@ -62,11 +62,8 @@ export default {
     };
   },
   async fetch({ store }) {
-    //if (!store.getters['userInfo/info']) {
-      //store.dispatch('userInfo/fetchUserInfo');
-      store.dispatch('records/fetchRecords');
-      await store.dispatch('categories/fetchCategories');
-    //}
+    store.dispatch('records/fetchRecords');
+    await store.dispatch('categories/fetchCategories');
   },
   setup(props, ctx) {
     const loading = ref(true);
@@ -121,6 +118,7 @@ export default {
       categories,
       filteredCategories,
       bill,
+      store: ctx.root.$store,
     };
   },
 };

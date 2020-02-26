@@ -19,7 +19,7 @@
                 data-target="dropdown"
                 ref="dropdownRef"
             >
-              {{ name }}
+              {{ name }} | {{ bill | currency('RUB') }}
               <i class="material-icons right">arrow_drop_down</i>
             </a>
 
@@ -30,7 +30,7 @@
                   to="/profile"
                   class="black-text">
                   <i class="material-icons">account_circle</i>
-                    {{ 'profile-title' | localize }}
+                    {{ 'profile-title' | localize(store) }}
                 </n-link>
               </li>
               <li class="divider" tabindex="-1"></li>
@@ -41,7 +41,7 @@
                   @click.prevent="logout"
                 >
                   <i class="material-icons">assignment_return</i>
-                    {{ 'logout' | localize }}
+                    {{ 'logout' | localize(store) }}
                 </a>
               </li>
             </ul>
@@ -73,6 +73,7 @@ export default {
     });
 
     const name = computed(() => ctx.root.$store.getters['userInfo/info'].name);
+    const bill = computed(() => ctx.root.$store.getters['userInfo/info'].bill);
 
     onBeforeUnmount(() => {
       clearInterval(interval);
@@ -90,6 +91,7 @@ export default {
     return {
       date,
       name,
+      bill,
       logout,
       store: ctx.root.$store,
     };

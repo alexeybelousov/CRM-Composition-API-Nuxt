@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{ 'profile-title' | localize }}</h3>
+      <h3>{{ 'profile-title' | localize(store) }}</h3>
     </div>
 
     <form
@@ -18,13 +18,13 @@
           v-model="nameField"
         >
 
-        <label for="description">{{ 'profile-name' | localize }}</label>
+        <label for="description">{{ 'profile-name' | localize(store) }}</label>
 
         <small
           v-if="isNameInvalid"
           class="helper-text invalid"
         >
-          {{ 'profile-message-incorrect-name' | localize }}
+          {{ 'profile-message-incorrect-name' | localize(store) }}
         </small>
       </div>
 
@@ -41,7 +41,7 @@
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        {{ 'profile-update' | localize }}
+        {{ 'profile-update' | localize(store) }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -102,6 +102,7 @@ export default {
       isNameInvalid,
       $v,
       isRusLocale,
+      store: ctx.root.$store,
     };
   },
 };

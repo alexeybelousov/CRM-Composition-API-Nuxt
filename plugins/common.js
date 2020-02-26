@@ -7,7 +7,6 @@ import localizeFilter from '@/filters/localize.filter';
 
 import { VuelidatePlugin } from '@vuelidate/core';
 import messagePlugin from '@/utils/message.plugin';
-import titlePlugin from '@/utils/title.plugin';
 
 import tooltipDirective from '@/directives/tooltip.directive';
 
@@ -21,7 +20,6 @@ Vue.filter('localize', localizeFilter);
 
 Vue.use(VuelidatePlugin);
 Vue.use(messagePlugin);
-Vue.use(titlePlugin);
 
 Vue.directive('tooltip', tooltipDirective);
 
