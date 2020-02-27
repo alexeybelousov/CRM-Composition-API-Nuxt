@@ -7,7 +7,7 @@ export const state = () => ({
 export const actions = {
   async fetchCategories({ dispatch, commit, rootGetters }) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       const categories = (await fb.database().ref(`/users/${uid}/categories`).once('value')).val() || {};
 
       commit('setCategories', Object.keys(categories).map((key) => ({ ...categories[key], id: key })));
@@ -18,7 +18,7 @@ export const actions = {
   },
   async fetchCategoryById({ dispatch, commit, rootGetters }, id) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       const category = (await fb.database().ref(`/users/${uid}/categories`).child(id).once('value')).val() || {};
 
       return { ...category, id };
@@ -29,7 +29,7 @@ export const actions = {
   },
   async createCategory({ dispatch, commit, rootGetters }, { title, limit }) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       const category = await fb.database().ref(`/users/${uid}/categories`).push({ title, limit });
 
       commit('addCategory', { title, limit, id: category.key });
@@ -40,7 +40,7 @@ export const actions = {
   },
   async updateCategory({ dispatch, commit, rootGetters }, { title, limit, id }) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       await fb.database().ref(`/users/${uid}/categories`).child(id).update({ title, limit });
 
       commit('updateCategory', { title, limit, id });

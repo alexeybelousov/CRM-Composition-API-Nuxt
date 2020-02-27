@@ -7,7 +7,7 @@ export const state = () => ({
 export const actions = {
   async fetchRecords({ commit, rootGetters }) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       const records = (await fb.database().ref(`/users/${uid}/records`).once('value')).val() || {};
 
       commit('setRecords', Object.keys(records).map((key) => ({ ...records[key], id: key })));
@@ -18,7 +18,7 @@ export const actions = {
   },
   async fetchRecordById({ commit, rootGetters }, id) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       const record = (await fb.database().ref(`/users/${uid}/records`).child(id).once('value')).val() || {};
 
       return { ...record, id };
@@ -29,7 +29,7 @@ export const actions = {
   },
   async createRecord({ dispatch, commit, getters, rootGetters }, record) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       await fb.database().ref(`/users/${uid}/records`).push(record);
 
       const bill = record.type === 'income'

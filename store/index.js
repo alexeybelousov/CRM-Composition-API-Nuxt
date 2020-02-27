@@ -26,11 +26,30 @@ export const actions = {
       });
     }
   },
-  async fetchCurrency({ commit }) {
-    const key = process.env.VUE_APP_FIXER;
-    const res = await axios.get(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`);
+  // async fetchCurrency({ commit }) {
+  //   const key = process.env.VUE_APP_FIXER;
+  //   const res = await axios.get(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`);
 
-    commit('setCurrency', res.data);
+  //   commit('setCurrency', res.data);
+  // },
+  async fetchCurrency({ commit }) {
+    const res = await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          success: true,
+          timestamp: 1582384207,
+          base: 'EUR',
+          date: '2020-02-22',
+          rates: {
+            USD: 1.084705,
+            EUR: 1,
+            RUB: 69.501721,
+          },
+        });
+      }, 300);
+    });
+
+    commit('setCurrency', res);
   },
 };
 

@@ -1,16 +1,8 @@
 {
-  "hosting": {
-    "public": "dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+  "functions": {
+    "source": "functions",
+    "predeploy": [
+    "rm -rf .nuxt && npm --prefix src run build && mkdir -p .nuxt/dist && cp -r .nuxt/dist/ .nuxt/dist && cp nuxt.config.js /"
     ]
   }
 }

@@ -7,7 +7,7 @@ export const state = () => ({
 export const actions = {
   async updateUserInfo({ dispatch, commit, rootGetters, getters }, toUpdate) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       const updateData = { ...getters['info'], ...toUpdate };
 
       await fb.database().ref(`/users/${uid}/info`).update(updateData);
@@ -21,7 +21,7 @@ export const actions = {
   },
   async fetchUserInfo({ dispatch, commit, rootGetters }) {
     try {
-      const uid = rootGetters['auth/user'].uid;
+      const uid = rootGetters['auth/user'] && rootGetters['auth/user'].uid;
       const info = (await fb.database().ref(`/users/${uid}/info`).once('value')).val();
 
       commit('setUserInfo', info);
