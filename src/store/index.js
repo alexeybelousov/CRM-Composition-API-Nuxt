@@ -7,7 +7,6 @@ export const state = () => ({
 
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
-    console.log('lol', req.headers.cookie);
     if (process.server && process.static) return
     if (!req.headers.cookie) return
 
