@@ -76,9 +76,8 @@ export default {
     })
 
     const logout = async () => {
-      ctx.root.$router.push("/login?message=logout")
-
       await ctx.root.$store.dispatch("auth/logout")
+      ctx.root.$router.push("/login?message=logout")
     }
 
     return {

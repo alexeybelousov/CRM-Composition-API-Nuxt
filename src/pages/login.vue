@@ -7,6 +7,7 @@
         <input
           id="email"
           v-model.trim="emailField"
+          :disabled="loading"
           type="text"
           class="validate"
           :class="{
@@ -25,6 +26,7 @@
         <input
           id="password"
           v-model.trim="passwordField"
+          :disabled="loading"
           type="password"
           class="validate"
           :class="{
@@ -42,7 +44,11 @@
 
     <div class="card-action">
       <div>
-        <button class="btn waves-effect waves-light auth-submit" type="submit">
+        <button
+          :disabled="loading"
+          class="btn waves-effect waves-light auth-submit"
+          type="submit"
+        >
           {{ "login" | localize(store) }}
           <i class="material-icons right">send</i>
         </button>
@@ -78,7 +84,7 @@ export default {
   },
   layout: "empty",
   setup(props, ctx) {
-    const loading = computed(() => ctx.root.$store.getters["auth/loading"])
+    const loading = computed(() => ctx.root.$store.getters['auth/loading'])
 
     const emailField = ref("")
     const passwordField = ref("")
