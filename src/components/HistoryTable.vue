@@ -41,7 +41,7 @@ export default {
   props: {
     records: {
       type: Array,
-      require: true
+      default: () => [],
     }
   },
   setup(props, ctx) {

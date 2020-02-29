@@ -32,7 +32,7 @@
             name="type"
             type="radio"
             value="income"
-          />
+          >
           <span>{{ "record-income" | localize(store) }}</span>
         </label>
       </p>
@@ -45,7 +45,7 @@
             name="type"
             type="radio"
             value="outcome"
-          />
+          >
           <span>{{ "record-outcome" | localize(store) }}</span>
         </label>
       </p>
@@ -58,7 +58,7 @@
           :class="{
             invalid: isAmountInvalid
           }"
-        />
+        >
 
         <label for="amount">{{ "record-amount" | localize(store) }}</label>
 
@@ -75,7 +75,7 @@
           :class="{
             invalid: isAmountInvalid
           }"
-        />
+        >
 
         <label for="description">{{ "record-desc" | localize(store) }}</label>
 

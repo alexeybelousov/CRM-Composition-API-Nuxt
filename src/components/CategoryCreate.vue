@@ -14,7 +14,7 @@
             :class="{
               invalid: isTitleInvalid
             }"
-          />
+          >
 
           <label for="name">{{ "name" | localize(store) }}</label>
 
@@ -31,7 +31,7 @@
             :class="{
               invalid: isLimitInvalid
             }"
-          />
+          >
 
           <label for="limit">{{ "categories-limit" | localize(store) }}</label>
 

@@ -42,7 +42,12 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onBeforeUnmount } from "@vue/composition-api"
+import {
+  ref,
+  computed,
+  onMounted,
+  onBeforeUnmount
+} from "@vue/composition-api"
 
 export default {
   setup(props, ctx) {

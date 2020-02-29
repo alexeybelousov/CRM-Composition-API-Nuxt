@@ -13,7 +13,7 @@
           :class="{
             invalid: isNameInvalid
           }"
-        />
+        >
 
         <label for="description">{{ "profile-name" | localize(store) }}</label>
 
@@ -25,7 +25,7 @@
       <div class="switch">
         <label>
           Eng
-          <input v-model="isRusLocale" type="checkbox" >
+          <input v-model="isRusLocale" type="checkbox">
           <span class="lever" />
           Rus
         </label>

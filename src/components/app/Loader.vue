@@ -17,16 +17,19 @@
 </template>
 
 <script>
-// import { computed } from '@vue/composition-api';
+import { computed } from '@vue/composition-api'
 
 export default {
   setup() {
-    // const color = computed(() => {
-    //   const colors = ['spinner-blue-only', 'spinner-red-only',
-    // 'spinner-green-only', 'spinner-yellow'];
-    //   return colors[Math.floor(Math.random() * 3)];
-    // });
-    const color = "spinner-red-only"
+    const color = computed(() => {
+      const colors = [
+        'spinner-blue-only',
+        'spinner-red-only',
+        'spinner-green-only',
+        'spinner-yellow'
+      ]
+      return colors[Math.floor(Math.random() * 3)]
+    })
 
     return {
       color

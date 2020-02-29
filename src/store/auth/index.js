@@ -4,13 +4,15 @@ import { fb } from "@/services/firebase"
 import Cookie from "js-cookie"
 
 export const state = () => ({
-  user: null
+  user: null,
+  loading: false
 })
 
 export const actions = {
   // eslint-disable-next-line no-unused-vars
   async login({ commit }, { email, password }) {
     try {
+      commit("setLoading", true)
       // Login the user
       await fb.auth().signInWithEmailAndPassword(email, password)
 
@@ -19,12 +21,14 @@ export const actions = {
       const { uid } = fb.auth().currentUser
 
       // Set JWT to the cookie
-      Cookie.set('__session', token)
+      Cookie.set("__session", token)
 
       // Set the user locally
-      commit('setUser', { email, uid, isServer: false })
+      commit("setUser", { email, uid, isServer: false })
+
+      commit("setLoading", false)
     } catch (e) {
-      commit('notify/setError', e, { root: true })
+      commit("notify/setError", e, { root: true })
       throw e
     }
   },
@@ -32,7 +36,7 @@ export const actions = {
   async register({ dispatch, commit }, { email, password, name }) {
     try {
       await fb.auth().createUserWithEmailAndPassword(email, password)
-      const uid = await dispatch('getUid')
+      const uid = await dispatch("getUid")
       await fb
         .database()
         .ref(`/users/${uid}/info`)
@@ -41,19 +45,15 @@ export const actions = {
           name
         })
     } catch (e) {
-      commit('notify/setError', e, { root: true })
+      commit("notify/setError", e, { root: true })
       throw e
     }
   },
-  getUid() {
-    const user = fb.auth().currentUser
-    return user ? user.uid : null
-  },
   async logout({ commit }) {
     await fb.auth().signOut()
-    await Cookie.remove('__session')
+    await Cookie.remove("__session")
 
-    commit('clearUser')
+    commit("clearUser")
   }
 }
 
@@ -63,9 +63,13 @@ export const mutations = {
   },
   clearUser(state) {
     state.user = null
+  },
+  setLoading(state, status) {
+    state.loading = status
   }
 }
 
 export const getters = {
-  user: state => state.user
+  user: state => state.user,
+  loading: state => state.loading
 }

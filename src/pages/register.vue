@@ -12,7 +12,7 @@
           :class="{
             invalid: isEmailInvalid
           }"
-        />
+        >
 
         <label for="email">{{ "email" | localize(store) }}</label>
 
@@ -30,7 +30,7 @@
           :class="{
             invalid: isPasswordInvalid
           }"
-        />
+        >
 
         <label for="password">{{ "password" | localize(store) }}</label>
 
@@ -48,7 +48,7 @@
           :class="{
             invalid: isNameInvalid
           }"
-        />
+        >
 
         <label for="name">{{ "name" | localize(store) }}</label>
 
@@ -59,7 +59,7 @@
 
       <p>
         <label>
-          <input v-model="agreeCheckbox" type="checkbox" >
+          <input v-model="agreeCheckbox" type="checkbox">
           <span>{{ "register-agree-with-rules" | localize(store) }}</span>
         </label>
       </p>
