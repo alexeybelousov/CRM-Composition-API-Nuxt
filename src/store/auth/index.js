@@ -25,18 +25,21 @@ export const actions = {
 
       // Set the user locally
       commit("setUser", { email, uid, isServer: false })
-
-      commit("setLoading", false)
     } catch (e) {
       commit("notify/setError", e, { root: true })
       throw e
+    } finally {
+      commit("setLoading", false)
     }
   },
   // eslint-disable-next-line no-unused-vars
   async register({ dispatch, commit }, { email, password, name }) {
     try {
-      await fb.auth().createUserWithEmailAndPassword(email, password)
-      const uid = await dispatch("getUid")
+      commit("setLoading", true)
+
+      const res = await fb.auth().createUserWithEmailAndPassword(email, password)
+      const uid = res.user.uid
+
       await fb
         .database()
         .ref(`/users/${uid}/info`)
@@ -47,6 +50,8 @@ export const actions = {
     } catch (e) {
       commit("notify/setError", e, { root: true })
       throw e
+    } finally {
+      commit("setLoading", false)
     }
   },
   async logout({ commit }) {

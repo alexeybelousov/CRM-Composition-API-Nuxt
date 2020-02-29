@@ -45,5 +45,11 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "eslint --ext .js,.vue --ignore-path .gitignore .",
+      "git add"
+    ]
   }
 }
