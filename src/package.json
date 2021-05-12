@@ -16,7 +16,7 @@
     "@vue/composition-api": "^0.3.4",
     "@vuelidate/core": "^2.0.0-alpha.0",
     "axios": "^0.19.2",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "cookieparser": "^0.1.0",
     "core-js": "^2.6.10",
     "cross-env": "^5.2.0",
