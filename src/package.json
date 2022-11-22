@@ -24,7 +24,7 @@
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
     "materialize-css": "^1.0.0-rc.2",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "vue-chartjs": "^3.5.0",
     "vuejs-paginate": "^2.1.0",
     "vuelidate": "^0.7.5",
